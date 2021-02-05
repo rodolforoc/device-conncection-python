@@ -1,4 +1,5 @@
 import sys
+import time
 
 from ip_file_valid import ip_file_valid
 from ip_addr_valid import ip_addr_valid
@@ -8,14 +9,12 @@ from create_threads import create_threads
 
 ip_list = ip_file_valid()
 
-
 try:
     ip_addr_valid(ip_list)
     
 except KeyboardInterrupt:
     print("\n\n* Programa interrompido por um usuário, saindo...\n")
     sys.exit()
-
 
 try:
     ip_reach(ip_list)
@@ -25,4 +24,6 @@ except KeyboardInterrupt:
     sys.exit()
 
 # Inicia as threads
-create_threads(ip_list, ssh_connection)
+while True:
+    create_threads(ip_list, ssh_connection)
+    time.sleep(10)

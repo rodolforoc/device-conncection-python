@@ -1,4 +1,5 @@
 import paramiko
+import datetime
 import os.path
 import time
 import sys
@@ -30,7 +31,7 @@ def ssh_connection(ip):
     global user_file
     global cmd_file
     
-    #Creating SSH CONNECTION
+    # Criando conexão SSH
     try:
         
         selected_user_file = open(user_file, 'r')
@@ -83,6 +84,17 @@ def ssh_connection(ip):
             
         else:
             print("\nDispositivo atualizado {} \n".format(ip))
+
+        # Achando o uso da CPU
+        cpu = re.search(b"%Cpu\(s\):(\s)+(.+?)(\s)* us,", router_output)
+        
+        # Decodificando para UTF-8
+        utilization = cpu.group(2).decode("utf-8")
+        
+        # Abrindo arquivo de CPU e inserindo novos dados
+        with open("D:\\Documents\\Python\\myFirstProject\\cpu.txt", "a") as f:
+            #f.write("{},{}\n".format(str(datetime.datetime.now()), utilization))
+            f.write(utilization + "\n")
             
         # Teste leitura comando de output
         #print(str(router_output) + "\n")
