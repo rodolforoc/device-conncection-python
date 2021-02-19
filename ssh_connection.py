@@ -83,7 +83,7 @@ def ssh_connection(ip):
             print("* Existe algum erro de syntax no dispositivo {}".format(ip))
             
         else:
-            print("\nDispositivo atualizado {} \n".format(ip))
+            print("\nExecutado para dispositivo {} \n".format(ip))
 
         # Achando o uso da CPU
         cpu = re.search(b"%Cpu\(s\):(\s)+(.+?)(\s)* us,", router_output)
@@ -92,7 +92,7 @@ def ssh_connection(ip):
         utilization = cpu.group(2).decode("utf-8")
         
         # Abrindo arquivo de CPU e inserindo novos dados
-        with open("D:\\Documents\\Python\\myFirstProject\\cpu.txt", "a") as f:
+        with open("D:\\Documents\\Python\\device configuration\\cpu.txt", "a") as f:
             #f.write("{},{}\n".format(str(datetime.datetime.now()), utilization))
             f.write(utilization + "\n")
             

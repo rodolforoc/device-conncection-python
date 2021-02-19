@@ -10,7 +10,7 @@ subplot = figure.add_subplot(1, 1, 1)
 # Funcao que lê o arquivo cpu.txt e alimenta a subplot
 def animation_function(i):
 
-    cpu_data = open("D:\\Documents\\Python\\myFirstProject\\cpu.txt").readlines()
+    cpu_data = open("D:\\Documents\\Python\\device configuration\\cpu.txt").readlines()
     
     x = []
     
